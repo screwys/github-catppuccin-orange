@@ -8,11 +8,11 @@
 @homepageURL https://github.com/screwys/github-catppuccin-orange
 ==/UserStyle== */
 
+@-moz-document regexp("^https?://((education|gist|graphql|guides|raw|resources|status|support|vscode-auth)\\.)?github\\.com((?!(/(sponsors|readme)$)).)*$"),
+               domain("githubusercontent.com"),
+               domain("www.githubstatus.com") {
+
 /*
- * For Stylus sectioned editor - set URL patterns:
- *   URLs matching the regexp: ^https?://((education|gist|graphql|guides|raw|resources|status|support|vscode-auth)\.)?github\.com((?!(/(sponsors|readme)$)).)*$
- *   URLs on the domain: githubusercontent.com
- *   URLs on the domain: www.githubstatus.com
  *
  * Catppuccin Mocha Palette
  * Base:     #1e1e2e    Mantle:   #181825    Crust:    #11111b
@@ -922,3 +922,5 @@ img[src*="render.githubusercontent.com/render/math"] {
 [class*="MergeBoxExpandable-module__isExpanded__"] {
   max-height: 700px;
 }
+
+} /* end @-moz-document */
