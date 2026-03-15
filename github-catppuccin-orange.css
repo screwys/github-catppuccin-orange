@@ -1,0 +1,821 @@
+/*
+ * GitHub Catppuccin Orange
+ * Dark orange Catppuccin Mocha theme for GitHub
+ * For Stylus sectioned editor - set URL patterns:
+ *   URLs matching the regexp: ^https?://((education|gist|graphql|guides|raw|resources|status|support|vscode-auth)\.)?github\.com((?!(/(sponsors|readme)$)).)*$
+ *   URLs on the domain: githubusercontent.com
+ *   URLs on the domain: www.githubstatus.com
+ *
+ * Catppuccin Mocha Palette
+ * Base:     #1e1e2e    Mantle:   #181825    Crust:    #11111b
+ * Surface0: #313244    Surface1: #45475a    Surface2: #585b70
+ * Overlay0: #6c7086    Overlay1: #7f849c    Overlay2: #9399b2
+ * Subtext0: #a6adc8    Subtext1: #bac2de    Text:     #cdd6f4
+ * Peach:    #fab387    Rosewater:#f5e0dc    Flamingo: #f2cdcd
+ * Mauve:    #cba6f7    Red:      #f38ba8    Maroon:   #eba0ac
+ * Yellow:   #f9e2af    Green:    #a6e3a1    Teal:     #94e2d5
+ * Sky:      #89dceb    Blue:     #89b4fa    Lavender: #b4befe
+ */
+
+/* ============================================================
+   ROOT VARIABLES - covers nearly all GitHub UI elements
+   ============================================================ */
+:root:root,
+:root:root body,
+[data-color-mode="light"][data-light-theme*="dark"],
+[data-color-mode="dark"][data-dark-theme*="dark"],
+[data-color-mode="auto"][data-light-theme*="dark"],
+[data-color-mode="auto"][data-dark-theme*="dark"] {
+
+  /* -- Catppuccin core tokens -- */
+  --ctp-base:     #1e1e2e;
+  --ctp-mantle:   #181825;
+  --ctp-crust:    #11111b;
+  --ctp-surface0: #313244;
+  --ctp-surface1: #45475a;
+  --ctp-surface2: #585b70;
+  --ctp-overlay0: #6c7086;
+  --ctp-overlay1: #7f849c;
+  --ctp-overlay2: #9399b2;
+  --ctp-subtext0: #a6adc8;
+  --ctp-subtext1: #bac2de;
+  --ctp-text:     #cdd6f4;
+  --ctp-peach:    #fab387;
+  --ctp-rosewater:#f5e0dc;
+  --ctp-flamingo: #f2cdcd;
+  --ctp-pink:     #f5c2e7;
+  --ctp-mauve:    #cba6f7;
+  --ctp-red:      #f38ba8;
+  --ctp-maroon:   #eba0ac;
+  --ctp-yellow:   #f9e2af;
+  --ctp-green:    #a6e3a1;
+  --ctp-teal:     #94e2d5;
+  --ctp-sky:      #89dceb;
+  --ctp-blue:     #89b4fa;
+  --ctp-lavender: #b4befe;
+
+  /* -- Theme bridge variables -- */
+  --ghd-bg-color: var(--ctp-base);
+  --ghd-code-background: var(--ctp-mantle);
+  --ghd-code-color: var(--ctp-text);
+  --ghd-body-color: var(--ctp-text);
+  --ghd-border-color: var(--ctp-surface1);
+
+  /* ---- Backgrounds ---- */
+  --bgColor-default: var(--ctp-base);
+  --bgColor-muted: var(--ctp-mantle);
+  --bgColor-inset: var(--ctp-mantle);
+  --bgColor-emphasis: var(--ctp-surface1);
+  --bgColor-inverse: var(--ctp-text);
+  --bgColor-white: var(--ctp-base);
+  --bgColor-neutral-emphasis: var(--ctp-overlay0);
+  --bgColor-neutral-muted: var(--ctp-surface0);
+  --bgColor-accent-emphasis: var(--ctp-peach);
+  --bgColor-accent-muted: rgba(250, 179, 135, 0.15);
+  --bgColor-success-emphasis: #40a02b;
+  --bgColor-success-muted: rgba(166, 227, 161, 0.15);
+  --bgColor-attention-emphasis: var(--ctp-yellow);
+  --bgColor-attention-muted: rgba(249, 226, 175, 0.15);
+  --bgColor-danger-emphasis: #d20f39;
+  --bgColor-danger-muted: rgba(243, 139, 168, 0.15);
+  --bgColor-done-emphasis: var(--ctp-mauve);
+  --bgColor-done-muted: rgba(203, 166, 247, 0.15);
+  --bgColor-open-emphasis: var(--ctp-green);
+  --bgColor-closed-emphasis: var(--ctp-red);
+
+  /* ---- Foreground / text ---- */
+  --fgColor-default: var(--ctp-text);
+  --fgColor-muted: var(--ctp-subtext0);
+  --fgColor-onEmphasis: var(--ctp-crust);
+  --fgColor-onInverse: var(--ctp-crust);
+  --fgColor-white: var(--ctp-text);
+  --fgColor-accent: var(--ctp-peach);
+  --fgColor-link: var(--ctp-peach);
+  --fgColor-success: var(--ctp-green);
+  --fgColor-attention: var(--ctp-yellow);
+  --fgColor-danger: var(--ctp-red);
+  --fgColor-done: var(--ctp-mauve);
+  --fgColor-open: var(--ctp-green);
+  --fgColor-closed: var(--ctp-red);
+
+  /* ---- Borders ---- */
+  --borderColor-default: var(--ctp-surface1);
+  --borderColor-muted: var(--ctp-surface0);
+  --borderColor-emphasis: var(--ctp-surface2);
+  --borderColor-accent-emphasis: var(--ctp-peach);
+  --borderColor-success-emphasis: var(--ctp-green);
+  --borderColor-attention-emphasis: var(--ctp-yellow);
+  --borderColor-danger-emphasis: var(--ctp-red);
+  --borderColor-done-emphasis: var(--ctp-mauve);
+  --borderColor-translucent: rgba(205, 214, 244, 0.1);
+
+  /* ---- Buttons ---- */
+  --button-default-bgColor-rest: var(--ctp-surface0);
+  --button-default-bgColor-hover: var(--ctp-surface1);
+  --button-default-bgColor-active: var(--ctp-surface2);
+  --button-default-bgColor-selected: var(--ctp-surface1);
+  --button-default-bgColor-disabled: var(--ctp-mantle);
+  --button-default-borderColor-rest: var(--ctp-surface1);
+  --button-default-borderColor-hover: var(--ctp-surface2);
+  --button-default-borderColor-disabled: var(--ctp-surface0);
+  --button-default-fgColor-rest: var(--ctp-text);
+  --button-primary-bgColor-rest: var(--ctp-peach);
+  --button-primary-bgColor-hover: #e8a070;
+  --button-primary-bgColor-active: #d08a58;
+  --button-primary-bgColor-disabled: rgba(250, 179, 135, 0.4);
+  --button-primary-fgColor-rest: var(--ctp-crust);
+  --button-primary-fgColor-disabled: rgba(17, 17, 27, 0.6);
+  --button-primary-borderColor-rest: var(--ctp-peach);
+  --button-primary-iconColor-rest: var(--ctp-crust);
+  --button-danger-fgColor-rest: var(--ctp-red);
+  --button-danger-fgColor-hover: var(--ctp-crust);
+  --button-danger-fgColor-active: var(--ctp-crust);
+  --button-danger-bgColor-hover: var(--ctp-red);
+  --button-danger-iconColor-hover: var(--ctp-crust);
+  --button-outline-fgColor-rest: var(--ctp-peach);
+  --button-outline-fgColor-hover: var(--ctp-crust);
+  --button-outline-fgColor-active: var(--ctp-crust);
+  --button-outline-bgColor-hover: var(--ctp-peach);
+  --button-invisible-iconColor-rest: var(--ctp-subtext0);
+
+  --buttonCounter-default-bgColor-rest: var(--ctp-surface1);
+  --buttonCounter-danger-bgColor-hover: rgba(17, 17, 27, 0.2);
+  --buttonCounter-danger-fgColor-hover: var(--ctp-crust);
+  --buttonCounter-outline-bgColor-hover: rgba(17, 17, 27, 0.2);
+  --buttonCounter-outline-fgColor-hover: var(--ctp-crust);
+
+  /* ---- Controls / inputs ---- */
+  --control-bgColor-rest: var(--ctp-surface0);
+  --control-bgColor-hover: var(--ctp-surface1);
+  --control-bgColor-active: var(--ctp-surface2);
+  --control-bgColor-disabled: var(--ctp-mantle);
+  --control-borderColor-rest: var(--ctp-surface1);
+  --control-borderColor-emphasis: var(--ctp-surface2);
+  --control-fgColor-rest: var(--ctp-text);
+  --control-fgColor-disabled: var(--ctp-overlay0);
+  --control-checked-bgColor-rest: var(--ctp-peach);
+  --control-checked-borderColor-rest: var(--ctp-peach);
+  --control-checked-fgColor-rest: var(--ctp-crust);
+  --control-transparent-bgColor-hover: rgba(205, 214, 244, 0.08);
+  --controlKnob-bgColor-rest: var(--ctp-base);
+  --controlKnob-bgColor-checked: var(--ctp-crust);
+  --controlKnob-borderColor-rest: var(--ctp-surface1);
+  --controlTrack-bgColor-rest: var(--ctp-surface0);
+  --controlTrack-bgColor-hover: var(--ctp-surface1);
+
+  /* ---- Header ---- */
+  --header-bgColor: var(--ctp-mantle);
+  --header-fgColor-default: var(--ctp-text);
+  --header-fgColor-logo: var(--ctp-text);
+  --headerSearch-bgColor: var(--ctp-base);
+  --headerSearch-borderColor: var(--ctp-surface1);
+
+  /* ---- Overlay / popover ---- */
+  --overlay-bgColor: var(--ctp-mantle);
+  --overlay-borderColor: var(--ctp-surface1);
+  --shadow-floating-small: 0 0 0 1px var(--ctp-surface1), 0 6px 12px rgba(0, 0, 0, 0.4);
+  --shadow-resting-small: none;
+  --shadow-inset: 0 1px 0 0 rgba(0, 0, 0, 0.2);
+
+  /* ---- Focus ---- */
+  --focus-outlineColor: var(--ctp-peach);
+
+  /* ---- Tooltip ---- */
+  --tooltip-bgColor: var(--ctp-surface0);
+  --tooltip-fgColor: var(--ctp-text);
+
+  /* ---- Avatar ---- */
+  --avatar-bgColor: transparent;
+  --avatar-borderColor: transparent;
+  --avatar-shadow: 0 0 0 2px var(--ctp-surface0);
+
+  /* ---- Timeline ---- */
+  --timelineBadge-bgColor: var(--ctp-surface0);
+
+  /* ---- Nav ---- */
+  --underlineNav-borderColor-active: var(--ctp-peach);
+  --sideNav-bgColor-selected: var(--ctp-surface0);
+
+  /* ---- Menu ---- */
+  --menu-bgColor-active: var(--ctp-surface0);
+
+  /* ---- Tree view ---- */
+  --treeViewItem-leadingVisual-iconColor-rest: var(--ctp-peach);
+
+  /* ---- Diffs ---- */
+  --diffBlob-addition-bgColor-line: rgba(166, 227, 161, 0.12);
+  --diffBlob-addition-bgColor-num: rgba(166, 227, 161, 0.20);
+  --diffBlob-addition-bgColor-word: rgba(166, 227, 161, 0.30);
+  --diffBlob-addition-fgColor-num: var(--ctp-subtext0);
+  --diffBlob-deletion-bgColor-line: rgba(243, 139, 168, 0.12);
+  --diffBlob-deletion-bgColor-num: rgba(243, 139, 168, 0.20);
+  --diffBlob-deletion-bgColor-word: rgba(243, 139, 168, 0.30);
+  --diffBlob-deletion-fgColor-num: var(--ctp-subtext0);
+  --diffBlob-hunk-bgColor-num: rgba(250, 179, 135, 0.20);
+  --diffBlob-hunk-bgColor-line: rgba(250, 179, 135, 0.10);
+  --diffBlob-expander-iconColor: var(--ctp-subtext0);
+
+  /* ---- Contribution calendar ---- */
+  --color-calendar-graph-day-bg: var(--ctp-surface0);
+  --color-calendar-graph-day-L1-bg: rgba(250, 179, 135, 0.25);
+  --color-calendar-graph-day-L2-bg: rgba(250, 179, 135, 0.50);
+  --color-calendar-graph-day-L3-bg: rgba(250, 179, 135, 0.75);
+  --color-calendar-graph-day-L4-bg: var(--ctp-peach);
+  --color-calendar-halloween-graph-day-L1-bg: var(--color-calendar-graph-day-L1-bg);
+  --color-calendar-halloween-graph-day-L2-bg: var(--color-calendar-graph-day-L2-bg);
+  --color-calendar-halloween-graph-day-L3-bg: var(--color-calendar-graph-day-L3-bg);
+  --color-calendar-halloween-graph-day-L4-bg: var(--color-calendar-graph-day-L4-bg);
+  --color-calendar-winter-graph-day-L1-bg: var(--color-calendar-graph-day-L1-bg);
+  --color-calendar-winter-graph-day-L2-bg: var(--color-calendar-graph-day-L2-bg);
+  --color-calendar-winter-graph-day-L3-bg: var(--color-calendar-graph-day-L3-bg);
+  --color-calendar-winter-graph-day-L4-bg: var(--color-calendar-graph-day-L4-bg);
+
+  /* ---- ANSI terminal colors ---- */
+  --color-ansi-black: var(--ctp-surface0);
+  --color-ansi-black-bright: var(--ctp-surface2);
+  --color-ansi-red: var(--ctp-red);
+  --color-ansi-red-bright: var(--ctp-maroon);
+  --color-ansi-green: var(--ctp-green);
+  --color-ansi-green-bright: #b5e8b0;
+  --color-ansi-yellow: var(--ctp-yellow);
+  --color-ansi-yellow-bright: #fce8c3;
+  --color-ansi-blue: var(--ctp-blue);
+  --color-ansi-blue-bright: #a4c4fa;
+  --color-ansi-magenta: var(--ctp-mauve);
+  --color-ansi-magenta-bright: var(--ctp-pink);
+  --color-ansi-cyan: var(--ctp-teal);
+  --color-ansi-cyan-bright: var(--ctp-sky);
+  --color-ansi-white: var(--ctp-subtext1);
+  --color-ansi-white-bright: var(--ctp-text);
+  --color-ansi-gray: var(--ctp-overlay1);
+
+  /* ---- Prettylights (syntax in diffs/issues) ---- */
+  --color-prettylights-syntax-comment: var(--ctp-overlay1);
+  --color-prettylights-syntax-constant: var(--ctp-peach);
+  --color-prettylights-syntax-entity: var(--ctp-blue);
+  --color-prettylights-syntax-storage-modifier-import: var(--ctp-text);
+  --color-prettylights-syntax-entity-tag: var(--ctp-teal);
+  --color-prettylights-syntax-keyword: var(--ctp-mauve);
+  --color-prettylights-syntax-string: var(--ctp-green);
+  --color-prettylights-syntax-variable: var(--ctp-peach);
+  --color-prettylights-syntax-invalid-illegal-text: var(--ctp-text);
+  --color-prettylights-syntax-invalid-illegal-bg: rgba(243, 139, 168, 0.3);
+  --color-prettylights-syntax-markup-heading: var(--ctp-peach);
+  --color-prettylights-syntax-markup-italic: var(--ctp-text);
+  --color-prettylights-syntax-markup-bold: var(--ctp-text);
+  --color-prettylights-syntax-markup-deleted-text: var(--ctp-red);
+  --color-prettylights-syntax-markup-deleted-bg: rgba(243, 139, 168, 0.15);
+  --color-prettylights-syntax-markup-inserted-text: var(--ctp-green);
+  --color-prettylights-syntax-markup-inserted-bg: rgba(166, 227, 161, 0.15);
+  --color-prettylights-syntax-markup-changed-text: var(--ctp-yellow);
+  --color-prettylights-syntax-markup-changed-bg: rgba(249, 226, 175, 0.15);
+  --color-prettylights-syntax-markup-ignored-text: var(--ctp-overlay0);
+  --color-prettylights-syntax-markup-ignored-bg: var(--ctp-surface0);
+  --color-prettylights-syntax-meta-diff-range: var(--ctp-mauve);
+  --color-prettylights-syntax-sublimelinter-gutter-mark: var(--ctp-overlay0);
+  --color-prettylights-syntax-brackethighlighter-unmatched: var(--ctp-red);
+  --color-prettylights-syntax-brackethighlighter-angle: var(--ctp-overlay1);
+  --color-prettylights-syntax-carriage-return-text: var(--ctp-crust);
+  --color-prettylights-syntax-carriage-return-bg: var(--ctp-red);
+
+  /* ---- Legacy color vars (still used in some places) ---- */
+  --color-accent-fg: var(--ctp-peach);
+  --color-accent-emphasis: var(--ctp-peach);
+  --color-accent-muted: rgba(250, 179, 135, 0.3);
+  --color-accent-subtle: rgba(250, 179, 135, 0.1);
+  --color-fg-default: var(--ctp-text);
+  --color-fg-muted: var(--ctp-subtext0);
+  --color-fg-subtle: var(--ctp-overlay0);
+  --color-fg-on-emphasis: var(--ctp-crust);
+  --color-canvas-default: var(--ctp-base);
+  --color-canvas-overlay: var(--ctp-mantle);
+  --color-canvas-inset: var(--ctp-mantle);
+  --color-canvas-subtle: var(--ctp-mantle);
+  --color-border-default: var(--ctp-surface1);
+  --color-border-muted: var(--ctp-surface0);
+  --color-border-subtle: rgba(205, 214, 244, 0.08);
+  --color-neutral-emphasis-plus: var(--ctp-overlay2);
+  --color-neutral-emphasis: var(--ctp-overlay0);
+  --color-neutral-muted: rgba(108, 112, 134, 0.3);
+  --color-neutral-subtle: rgba(108, 112, 134, 0.1);
+  --color-success-fg: var(--ctp-green);
+  --color-success-emphasis: #40a02b;
+  --color-attention-fg: var(--ctp-yellow);
+  --color-attention-emphasis: #df8e1d;
+  --color-danger-fg: var(--ctp-red);
+  --color-danger-emphasis: #d20f39;
+  --color-done-fg: var(--ctp-mauve);
+  --color-done-emphasis: #8839ef;
+  --color-text-primary: var(--ctp-text);
+  --color-text-secondary: var(--ctp-subtext0);
+  --color-text-tertiary: var(--ctp-overlay1);
+  --color-text-link: var(--ctp-peach);
+  --color-text-white: var(--ctp-text);
+  --color-bg-canvas: var(--ctp-base);
+  --color-bg-canvas-inset: var(--ctp-mantle);
+  --color-bg-primary: var(--ctp-base);
+  --color-bg-secondary: var(--ctp-mantle);
+  --color-bg-tertiary: var(--ctp-surface0);
+  --color-bg-info: rgba(250, 179, 135, 0.08);
+  --color-bg-overlay: var(--ctp-mantle);
+  --color-border-primary: var(--ctp-surface1);
+  --color-border-secondary: var(--ctp-surface0);
+  --color-border-tertiary: var(--ctp-surface2);
+  --color-input-bg: var(--ctp-base);
+  --color-input-border: var(--ctp-surface1);
+  --color-input-contrast-bg: var(--ctp-mantle);
+  --color-btn-bg: var(--ctp-surface0);
+  --color-btn-border: var(--ctp-surface1);
+  --color-btn-text: var(--ctp-text);
+  --color-btn-hover-bg: var(--ctp-surface1);
+  --color-btn-hover-border: var(--ctp-surface2);
+  --color-btn-active-bg: var(--ctp-surface2);
+  --color-btn-primary-text: var(--ctp-crust);
+  --color-btn-counter-bg: var(--ctp-surface1);
+  --color-btn-outline-text: var(--ctp-peach);
+  --color-btn-outline-hover-text: var(--ctp-crust);
+  --color-btn-outline-hover-bg: var(--ctp-peach);
+  --color-btn-outline-selected-bg: var(--ctp-peach);
+  --color-counter-bg: var(--ctp-surface1);
+  --color-counter-text: var(--ctp-subtext0);
+  --color-header-bg: var(--ctp-mantle);
+  --color-header-text: var(--ctp-text);
+  --color-header-search-bg: var(--ctp-base);
+  --color-header-search-border: var(--ctp-surface1);
+  --color-icon-primary: var(--ctp-text);
+  --color-icon-secondary: var(--ctp-subtext0);
+  --color-icon-tertiary: var(--ctp-overlay1);
+  --color-icon-directory: var(--ctp-peach);
+  --color-files-explorer-icon: var(--ctp-peach);
+  --color-tooltip-bg: var(--ctp-surface0);
+  --color-tooltip-text: var(--ctp-text);
+  --color-timeline-badge-bg: var(--ctp-surface0);
+  --color-underlinenav-border-active: var(--ctp-peach);
+  --color-underlinenav-icon-active: var(--ctp-text);
+  --color-underlinenav-text-active: var(--ctp-text);
+  --color-underlinenav-text-hover: var(--ctp-text);
+  --color-underlinenav-text: var(--ctp-subtext0);
+  --color-underlinenav-counter-bg: var(--ctp-surface1);
+  --color-underlinenav-counter-text: var(--ctp-text);
+  --color-sidenav-selected-bg: var(--ctp-surface0);
+  --color-sidenav-border-active: var(--ctp-peach);
+  --color-menu-bg-active: var(--ctp-surface0);
+  --color-menu-border-active: var(--ctp-peach);
+  --color-project-card-bg: var(--ctp-mantle);
+  --color-checks-bg: var(--ctp-mantle);
+  --color-social-count-bg: var(--ctp-base);
+
+  /* diff colors */
+  --color-diff-blob-addition-line-bg: rgba(166, 227, 161, 0.12);
+  --color-diff-blob-addition-num-bg: rgba(166, 227, 161, 0.20);
+  --color-diff-blob-addition-word-bg: rgba(166, 227, 161, 0.30);
+  --color-diff-blob-addition-num-text: var(--ctp-subtext0);
+  --color-diff-blob-deletion-line-bg: rgba(243, 139, 168, 0.12);
+  --color-diff-blob-deletion-num-bg: rgba(243, 139, 168, 0.20);
+  --color-diff-blob-deletion-word-bg: rgba(243, 139, 168, 0.30);
+  --color-diff-blob-deletion-num-text: var(--ctp-subtext0);
+  --color-diff-blob-hunk-num-bg: rgba(250, 179, 135, 0.20);
+  --color-diff-blob-hunk-line-bg: rgba(250, 179, 135, 0.08);
+  --color-diff-blob-hunk-text: var(--ctp-subtext0);
+  --color-diff-blob-expander-icon: var(--ctp-subtext0);
+  --color-diff-blob-expander-hover-bg: var(--ctp-peach);
+  --color-diff-blob-expander-hover-icon: var(--ctp-crust);
+  --color-diff-blob-num-text: var(--ctp-overlay1);
+  --color-diff-blob-num-hover-text: var(--ctp-text);
+  --color-diffstat-addition-bg: var(--ctp-green);
+  --color-diffstat-addition-border: var(--ctp-green);
+  --color-diffstat-deletion-bg: var(--ctp-red);
+  --color-diffstat-deletion-border: var(--ctp-red);
+  --color-diffstat-neutral-bg: var(--ctp-surface2);
+  --color-diffstat-neutral-border: var(--ctp-surface2);
+
+  /* PR/Issue state colors */
+  --color-pr-state-open-bg: var(--ctp-green);
+  --color-pr-state-open-text: var(--ctp-crust);
+  --color-pr-state-closed-bg: var(--ctp-red);
+  --color-pr-state-closed-text: var(--ctp-crust);
+  --color-pr-state-merged-bg: var(--ctp-mauve);
+  --color-pr-state-merged-text: var(--ctp-crust);
+  --color-pr-state-draft-bg: var(--ctp-overlay0);
+  --color-pr-state-draft-text: var(--ctp-crust);
+}
+
+/* ============================================================
+   BODY & HTML
+   ============================================================ */
+html {
+  background: transparent;
+}
+
+body {
+  color: var(--ctp-text);
+  background-color: var(--ctp-base) !important;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.Header, .Header-old {
+  background: var(--ctp-mantle) !important;
+  border-bottom: 1px solid var(--ctp-surface0) !important;
+}
+
+.Header-link {
+  color: var(--ctp-text);
+}
+
+.Header-link:hover, .Header-link:focus {
+  color: var(--ctp-peach);
+}
+
+/* ============================================================
+   LINKS
+   ============================================================ */
+a:not([class]):hover,
+.Link--primary:hover,
+.markdown-body a:not([class]):hover {
+  color: var(--ctp-peach);
+}
+
+/* ============================================================
+   CODE & SYNTAX HIGHLIGHTING
+   ============================================================ */
+.highlight, .highlight pre,
+.markdown-body pre, .markdown-body pre code,
+.blob-code, .blob-code-inner,
+.CodeMirror {
+  background-color: var(--ctp-mantle) !important;
+  color: var(--ctp-text) !important;
+}
+
+.blob-num {
+  color: var(--ctp-overlay0) !important;
+}
+
+/* Inline code */
+.markdown-body code, .markdown-body tt {
+  background: var(--ctp-surface0);
+  border: 1px solid var(--ctp-surface1);
+  border-radius: 6px;
+  color: var(--ctp-rosewater);
+}
+
+.markdown-body pre code, .markdown-body pre tt {
+  background: transparent !important;
+  border: none !important;
+  color: var(--ctp-text);
+}
+
+/* Syntax - Catppuccin Mocha colors */
+.pl-c, .pl-c span { color: var(--ctp-overlay1) !important; font-style: italic !important; }
+.pl-c1 { color: var(--ctp-peach) !important; }
+.pl-cce { color: var(--ctp-teal) !important; }
+.pl-cn { color: var(--ctp-peach) !important; }
+.pl-cos { color: var(--ctp-green) !important; }
+.pl-e, .pl-en { color: var(--ctp-blue) !important; }
+.pl-ef { color: var(--ctp-blue) !important; }
+.pl-ent { color: var(--ctp-teal) !important; }
+.pl-k { color: var(--ctp-mauve) !important; }
+.pl-s, .pl-pds { color: var(--ctp-green) !important; }
+.pl-s1 { color: var(--ctp-text) !important; }
+.pl-smi { color: var(--ctp-text) !important; }
+.pl-sr { color: var(--ctp-teal) !important; }
+.pl-v { color: var(--ctp-peach) !important; }
+.pl-mb { color: var(--ctp-peach) !important; font-weight: 700 !important; }
+.pl-mh { color: var(--ctp-peach) !important; }
+.pl-mi { color: var(--ctp-mauve) !important; font-style: italic !important; }
+.pl-mp { color: var(--ctp-blue) !important; }
+.pl-ms { color: var(--ctp-mauve) !important; }
+.pl-sc { color: var(--ctp-peach) !important; }
+.pl-bu { color: var(--ctp-red) !important; }
+.pl-st { color: var(--ctp-blue) !important; }
+
+/* Diff addition / deletion in syntax */
+.pl-mi1, .pl-mdht { color: var(--ctp-green) !important; background: rgba(166, 227, 161, 0.12) !important; }
+.pl-md, .pl-mdhf { color: var(--ctp-red) !important; background: rgba(243, 139, 168, 0.12) !important; }
+.pl-mdr { color: var(--ctp-overlay1) !important; }
+.pl-mdh, .pl-mdi { color: var(--ctp-mauve) !important; }
+
+/* Token hover */
+.pl-token.active, .pl-token:hover {
+  background: var(--ctp-peach) !important;
+  color: var(--ctp-crust) !important;
+}
+
+/* ============================================================
+   SELECTION
+   ============================================================ */
+::selection {
+  background-color: rgba(250, 179, 135, 0.35) !important;
+  color: var(--ctp-text) !important;
+}
+
+::-moz-selection {
+  background-color: rgba(250, 179, 135, 0.35) !important;
+  color: var(--ctp-text) !important;
+}
+
+/* ============================================================
+   NOTIFICATION / UNREAD INDICATOR
+   ============================================================ */
+.notification-indicator .mail-status,
+.unread-indicator {
+  background-image: linear-gradient(var(--ctp-peach), var(--ctp-peach));
+}
+
+.notification-indicator .mail-status {
+  border-color: var(--ctp-mantle);
+}
+
+/* ============================================================
+   PROGRESS / LOADING BAR
+   ============================================================ */
+.progress-pjax-loader > .progress-pjax-loader-bar {
+  background-color: var(--ctp-peach);
+}
+
+/* ============================================================
+   REPO FILE BROWSER
+   ============================================================ */
+.file-header, [class*="Diff-module__diffHeaderWrapper"] {
+  background: var(--ctp-mantle) !important;
+}
+
+/* ============================================================
+   TOPIC TAGS
+   ============================================================ */
+.topic-tag, .topic-tag-link {
+  background: rgba(250, 179, 135, 0.1);
+  color: var(--ctp-peach);
+  border: 1px solid rgba(250, 179, 135, 0.25);
+}
+
+.topic-tag:hover, .topic-tag-link:hover {
+  background: rgba(250, 179, 135, 0.2);
+  color: var(--ctp-peach);
+}
+
+/* ============================================================
+   COMMIT REF / BRANCH NAME
+   ============================================================ */
+.commit-ref, .branch-name {
+  background: rgba(250, 179, 135, 0.1);
+  color: var(--ctp-peach);
+  border: 1px solid rgba(250, 179, 135, 0.25);
+}
+
+.commit-ref a, a.branch-name {
+  color: var(--ctp-peach);
+}
+
+/* ============================================================
+   BOX / CARD BACKGROUNDS
+   ============================================================ */
+.Box-body, .Box-row {
+  background: var(--ctp-base);
+}
+
+.Box-header {
+  background: var(--ctp-mantle);
+}
+
+/* Remove transparent background overrides that break the theme */
+.application-main > .color-bg-default,
+.application-main > div > .color-bg-inset,
+.feed-background {
+  background: transparent !important;
+}
+
+/* ============================================================
+   CONTRIBUTION CALENDAR - direct cell targeting
+   ============================================================ */
+.ContributionCalendar-day[data-level="0"] {
+  background-color: var(--ctp-surface0) !important;
+  outline: 1px solid rgba(250, 179, 135, 0.04) !important;
+  outline-offset: -1px !important;
+}
+
+.ContributionCalendar-day[data-level="1"] {
+  background-color: rgba(250, 179, 135, 0.30) !important;
+  outline: 1px solid rgba(250, 179, 135, 0.10) !important;
+  outline-offset: -1px !important;
+}
+
+.ContributionCalendar-day[data-level="2"] {
+  background-color: rgba(250, 179, 135, 0.55) !important;
+  outline: 1px solid rgba(250, 179, 135, 0.15) !important;
+  outline-offset: -1px !important;
+}
+
+.ContributionCalendar-day[data-level="3"] {
+  background-color: rgba(250, 179, 135, 0.78) !important;
+  outline: 1px solid rgba(250, 179, 135, 0.20) !important;
+  outline-offset: -1px !important;
+}
+
+.ContributionCalendar-day[data-level="4"] {
+  background-color: #fab387 !important;
+  outline: 1px solid rgba(250, 179, 135, 0.30) !important;
+  outline-offset: -1px !important;
+}
+
+/* Calendar grid styling */
+.ContributionCalendar-grid {
+  background: transparent !important;
+}
+
+.ContributionCalendar-label {
+  color: var(--ctp-subtext0) !important;
+}
+
+/* Legend squares */
+[id="contribution-graph-legend-level-0"] {
+  background-color: var(--ctp-surface0) !important;
+}
+
+[id="contribution-graph-legend-level-1"] {
+  background-color: rgba(250, 179, 135, 0.30) !important;
+}
+
+[id="contribution-graph-legend-level-2"] {
+  background-color: rgba(250, 179, 135, 0.55) !important;
+}
+
+[id="contribution-graph-legend-level-3"] {
+  background-color: rgba(250, 179, 135, 0.78) !important;
+}
+
+[id="contribution-graph-legend-level-4"] {
+  background-color: #fab387 !important;
+}
+
+/* ============================================================
+   CONTRIBUTION CALENDAR TOOLTIP
+   ============================================================ */
+.svg-tip {
+  background: var(--ctp-surface0) !important;
+  color: var(--ctp-subtext0);
+}
+
+.svg-tip::after {
+  border-top-color: var(--ctp-surface0) !important;
+}
+
+.svg-tip strong {
+  color: var(--ctp-text);
+}
+
+/* ============================================================
+   TIMELINE
+   ============================================================ */
+.discussion-timeline::before {
+  background: var(--ctp-surface0) !important;
+}
+
+.discussion-timeline-actions {
+  border-top: 2px solid var(--ctp-surface1) !important;
+  background: none !important;
+}
+
+.TimelineItem-badge {
+  border-color: var(--ctp-base);
+}
+
+/* ============================================================
+   CURRENT USER COMMENTS (orange tint)
+   ============================================================ */
+.timeline-comment.current-user:not(.is-internal) .timeline-comment-header {
+  background: rgba(250, 179, 135, 0.06);
+  border-color: rgba(250, 179, 135, 0.2);
+}
+
+/* ============================================================
+   LABELS - fix label rendering
+   ============================================================ */
+.hx_IssueLabel, [class^="TokenBase__StyledTokenBase"] {
+  --lightness-threshold: .453 !important;
+  --border-threshold: .96 !important;
+  --border-alpha: max(0, min(calc((var(--perceived-lightness) - var(--border-threshold)) * 100), 1)) !important;
+  background: rgb(var(--label-r), var(--label-g), var(--label-b)) !important;
+  color: hsl(0, 0%, calc(var(--lightness-switch) * 100%)) !important;
+  border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) - 25) * 1%), var(--border-alpha)) !important;
+}
+
+/* ============================================================
+   PLACEHOLDERS
+   ============================================================ */
+::placeholder {
+  color: var(--ctp-overlay0) !important;
+  opacity: 1 !important;
+}
+
+/* ============================================================
+   SCROLLBAR (for Webkit browsers)
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ctp-mantle);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ctp-surface1);
+  border-radius: 5px;
+  border: 2px solid var(--ctp-mantle);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ctp-surface2);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--ctp-mantle);
+}
+
+/* ============================================================
+   FORM SELECT DROPDOWN ARROW
+   ============================================================ */
+.form-select {
+  background-color: var(--ctp-base) !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='10' viewBox='0 0 8 10'%3E%3Cpath fill='%23a6adc8' d='M0 3l4 4 4-4z'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 8px center !important;
+  background-size: 8px 10px !important;
+}
+
+/* ============================================================
+   AUTOFILL FIX
+   ============================================================ */
+@keyframes autofill {
+  to {
+    background-color: var(--ctp-base);
+    background-image: none;
+    color: var(--ctp-text);
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  animation-name: autofill !important;
+  animation-fill-mode: both !important;
+}
+
+/* ============================================================
+   MISC FIXES
+   ============================================================ */
+
+/* remove box shadows on buttons */
+.btn, .social-count {
+  box-shadow: none !important;
+}
+
+/* remove box shadow noise */
+.box-shadow-none {
+  box-shadow: none !important;
+}
+
+/* Dropdown shadows */
+.dropdown-menu, .select-menu-modal {
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Fix new comment form */
+.timeline-new-comment .timeline-comment,
+.previewable-comment-form .comment-form-head.tabnav {
+  background: var(--ctp-mantle) !important;
+}
+
+/* Tab selected state */
+.tabnav-tab.selected,
+.tabnav-tab[aria-selected="true"],
+.tabnav-tab[aria-current]:not([aria-current="false"]) {
+  background: var(--ctp-base);
+  border-bottom-color: var(--ctp-base) !important;
+}
+
+/* Markdown body image background (for transparent PNGs) */
+.markdown-body img {
+  background: transparent;
+}
+
+/* Math SVG inversion */
+img[src*="render.githubusercontent.com/render/math"] {
+  filter: invert(90%);
+  background-color: transparent;
+}
+
+/* Fix blankslates */
+.blankslate {
+  background: none !important;
+}
+
+.blankslate.border {
+  background: var(--ctp-mantle) !important;
+}
