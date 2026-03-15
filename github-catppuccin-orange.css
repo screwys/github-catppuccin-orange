@@ -896,6 +896,20 @@ img[src*="render.githubusercontent.com/render/math"] {
   tab-size: 4;
 }
 
+/* Snippet clipboard wrapper (code blocks with copy button) */
+.markdown-body .snippet-clipboard-content,
+.markdown-body .highlight {
+  background-color: var(--ctp-crust) !important;
+  border: 1px solid var(--ctp-surface0) !important;
+  border-radius: 8px;
+}
+
+.markdown-body .snippet-clipboard-content pre,
+.markdown-body .highlight pre {
+  border: none !important;
+  background: transparent !important;
+}
+
 /* Expandable merge box - allow more height */
 [class*="MergeBoxExpandable-module__isExpanded__"] {
   max-height: 700px;
