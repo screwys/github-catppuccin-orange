@@ -1,6 +1,14 @@
+/* ==UserStyle==
+@name        GitHub Catppuccin Orange
+@namespace   github-catppuccin-orange
+@version     1.0.0
+@description Dark orange Catppuccin Mocha theme for GitHub
+@author      screwys
+@license     GPL-3.0
+@homepageURL https://github.com/screwys/github-catppuccin-orange
+==/UserStyle== */
+
 /*
- * GitHub Catppuccin Orange
- * Dark orange Catppuccin Mocha theme for GitHub
  * For Stylus sectioned editor - set URL patterns:
  *   URLs matching the regexp: ^https?://((education|gist|graphql|guides|raw|resources|status|support|vscode-auth)\.)?github\.com((?!(/(sponsors|readme)$)).)*$
  *   URLs on the domain: githubusercontent.com
