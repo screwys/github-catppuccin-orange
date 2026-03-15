@@ -819,3 +819,84 @@ img[src*="render.githubusercontent.com/render/math"] {
 .blankslate.border {
   background: var(--ctp-mantle) !important;
 }
+
+/* ============================================================
+   ACTIVITY OVERVIEW GRAPH (profile page diamond chart)
+   ============================================================ */
+.js-activity-overview-graph .js-highlight-blob {
+  fill: var(--ctp-peach) !important;
+  stroke: var(--ctp-peach) !important;
+  opacity: 0.45 !important;
+}
+
+.js-activity-overview-graph .activity-overview-axis {
+  stroke: var(--ctp-peach) !important;
+  opacity: 0.6 !important;
+}
+
+.js-activity-overview-graph .activity-overview-point {
+  fill: var(--ctp-text) !important;
+  stroke: var(--ctp-peach) !important;
+}
+
+.js-activity-overview-graph .activity-overview-percentage {
+  fill: var(--ctp-text) !important;
+}
+
+.js-activity-overview-graph .activity-overview-label {
+  fill: var(--ctp-subtext0) !important;
+}
+
+/* ============================================================
+   CONTRIBUTION ACTIVITY PROGRESS BARS (repo breakdown)
+   ============================================================ */
+.Progress.color-bg-default {
+  background-color: var(--ctp-surface0) !important;
+}
+
+.Progress-item {
+  background-color: var(--ctp-peach) !important;
+}
+
+/* Override inline green colors on contribution progress bars */
+.contribution-activity-listing .Progress-item,
+.js-yearly-contributions .Progress-item,
+[aria-label*="commits"] .Progress-item,
+.Progress-item[style*="background-color: #216e39"],
+.Progress-item[style*="background-color: #30a14e"],
+.Progress-item[style*="background-color: #40c463"],
+.Progress-item[style*="background-color: #9be9a8"] {
+  background-color: var(--ctp-peach) !important;
+}
+
+/* ============================================================
+   INLINE CODE HIGHLIGHTING (markdown-body & markdown-title)
+   ============================================================ */
+.markdown-body code,
+.markdown-title code {
+  color: var(--ctp-sky) !important;
+  background-color: rgba(137, 220, 235, 0.08) !important;
+  border: 1px solid rgba(137, 220, 235, 0.15) !important;
+  border-radius: 6px;
+  padding: 0.2em 0.4em;
+}
+
+.markdown-body pre code {
+  color: var(--ctp-text) !important;
+  background-color: inherit !important;
+  border: none !important;
+  padding: 0;
+}
+
+/* Code blocks - slightly brighter background for contrast */
+.markdown-body pre {
+  background-color: var(--ctp-crust) !important;
+  border: 1px solid var(--ctp-surface0) !important;
+  border-radius: 8px;
+  tab-size: 4;
+}
+
+/* Expandable merge box - allow more height */
+[class*="MergeBoxExpandable-module__isExpanded__"] {
+  max-height: 700px;
+}
