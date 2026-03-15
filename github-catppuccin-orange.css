@@ -8,7 +8,8 @@
 @homepageURL https://github.com/screwys/github-catppuccin-orange
 ==/UserStyle== */
 
-@-moz-document regexp("^https?://((education|gist|graphql|guides|raw|resources|status|support|vscode-auth)\\.)?github\\.com((?!(/(sponsors|readme)$)).)*$"),
+@-moz-document domain("github.com"),
+               domain("gist.github.com"),
                domain("githubusercontent.com"),
                domain("www.githubstatus.com") {
 
